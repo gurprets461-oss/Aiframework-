@@ -84,13 +84,17 @@ This project stands at the intersection of:
 
 It is designed to be both academically serious and publicly understandable.
 
+## Supplement content (`supplement.js`)
+
+Glossary definitions, acronym reference, limitations, and detailed methodology live in **`supplement.js`** so they can be updated in one place without duplicating long copy in `index.html`. On load, the script renders into the About & Sources page (`#supplement-glossary`, `#supplement-limitations`). Other sections link to those anchors via `goToGlossary()` and `goToLimitations()`.
+
 ## Technology
 
 The site is built as a responsive static website using:
 
 - HTML
 - CSS
-- JavaScript
+- JavaScript (`index.html` navigation + `supplement.js` content)
 - Custom multi-page navigation
 - Responsive card-based layouts
 - Research-style visual hierarchy

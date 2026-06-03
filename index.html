@@ -1263,7 +1263,7 @@
   <div class="page-header">
     <div class="page-header-inner">
       <h1>Understanding the Problem</h1>
-      <p class="lead">To understand the issue this project addresses, it helps to begin with a basic question: what are medical AI tools, and why could fairness be a concern? This section explains the topic in plain language for readers who may have little or no prior background in artificial intelligence, medicine, or regulation.</p>
+      <p class="lead">To understand the issue this project addresses, it helps to begin with a basic question: what are medical AI tools, and why could fairness be a concern? This section explains the topic in plain language for readers who may have little or no prior background in artificial intelligence, medicine, or regulation. Unfamiliar terms are defined in the <a href="#" class="text-teal" style="color: var(--teal);" onclick="goToGlossary(); return false;">glossary</a> on About &amp; Sources.</p>
     </div>
   </div>
 
@@ -1495,7 +1495,7 @@
   <div class="section">
     <div class="section-label">Methodology</div>
     <h2 class="section-title">How the analysis was done</h2>
-    <p class="body-text">The project used a mixed documentary and policy-analysis approach. Methods included literature review, claim verification through public and institutional sources, structured comparison across FDA-facing materials, document-by-document review of device records, and AI-assisted synthesis to identify recurring patterns in transparency gaps, subgroup visibility, validation practices, and monitoring expectations.</p>
+    <p class="body-text">The project used a mixed documentary and policy-analysis approach. Methods included literature review, claim verification through public and institutional sources, structured comparison across U.S. Food and Drug Administration (FDA) facing materials, document-by-document review of device records, and AI-assisted synthesis to identify recurring patterns in transparency gaps, subgroup visibility, validation practices, and monitoring expectations. See <a href="#" class="text-teal" style="color: var(--teal);" onclick="goToLimitations(); return false;">limitations and detailed methodology</a> on About &amp; Sources.</p>
     <ul class="bullet-list">
       <li>Literature review of academic, institutional, and regulatory sources</li>
       <li>Verification of major statistics and claims through public sources</li>
@@ -2026,6 +2026,30 @@
 
     <hr class="section-divider" style="margin: 48px 0;">
 
+    <!-- Limitations (content from supplement.js) -->
+    <div class="section-label" id="limitations">Limitations</div>
+    <h2 class="section-title">Limitations and detailed methodology</h2>
+    <div id="supplement-limitations" aria-live="polite">
+      <p class="body-text">Loading limitations and methodology…</p>
+    </div>
+    <noscript>
+      <p class="body-text">Limitations and detailed methodology are defined in <code>supplement.js</code> in this repository. Enable JavaScript to view them here, or open that file directly.</p>
+    </noscript>
+
+    <hr class="section-divider" style="margin: 48px 0;">
+
+    <!-- Glossary (content from supplement.js) -->
+    <div class="section-label" id="glossary">Reference</div>
+    <h2 class="section-title">Glossary and acronyms</h2>
+    <div id="supplement-glossary" aria-live="polite">
+      <p class="body-text">Loading glossary…</p>
+    </div>
+    <noscript>
+      <p class="body-text">Glossary entries are defined in <code>supplement.js</code> in this repository. Enable JavaScript to view them here, or open that file directly.</p>
+    </noscript>
+
+    <hr class="section-divider" style="margin: 48px 0;">
+
     <!-- Sources -->
     <div class="section-label">References</div>
     <h2 class="section-title">Key sources</h2>
@@ -2108,7 +2132,28 @@
       this.classList.add('active');
     });
   });
+
+  function scrollToSupplementSection(sectionId) {
+    const el = document.getElementById(sectionId);
+    if (el) {
+      setTimeout(function () {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 150);
+    }
+  }
+
+  function goToGlossary() {
+    showPage('about');
+    scrollToSupplementSection('glossary');
+  }
+
+  function goToLimitations() {
+    showPage('about');
+    scrollToSupplementSection('limitations');
+  }
 </script>
+
+<script src="supplement.js"></script>
 
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"f39fb7b1faca4250aadb8bd708f6c408","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
