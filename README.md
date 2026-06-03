@@ -4,9 +4,18 @@
 
 The site translates a complex policy and medical AI issue into an accessible, evidence-driven resource for students, researchers, clinicians, policymakers, hospitals, and the general public.
 
+## Live site
+
+| | URL |
+| --- | --- |
+| **Current (most up to date)** | https://gurprets461-oss.github.io/Aiframework-/ |
+| **Original** | https://aiframework.site |
+
+Use the GitHub Pages URL for the latest deployed version from this repository. **aiframework.site** is the original domain and may not always reflect the newest changes immediately.
+
 ## Overview
 
-AIFramework.site focuses on a critical question in medical AI oversight:
+The project focuses on a critical question in medical AI oversight:
 
 **Do public-facing regulatory records provide enough information to evaluate whether AI diagnostic tools were tested fairly across diverse populations?**
 
@@ -61,7 +70,7 @@ These case studies illustrate how public-facing documentation can vary widely in
 
 ### Public Guide
 
-AIFramework.site also includes a practical public guide titled **“What to Ask About Medical AI.”** This section turns the research into clear questions that patients, students, and nontechnical readers can use to think critically about medical AI.
+The site also includes a practical public guide titled **“What to Ask About Medical AI.”** This section turns the research into clear questions that patients, students, and nontechnical readers can use to think critically about medical AI.
 
 ## Why It Matters
 
@@ -69,7 +78,7 @@ AI-enabled diagnostic and triage tools are increasingly used in real healthcare 
 
 However, strong overall performance does not guarantee equitable performance across all patient groups. A tool may appear accurate on average while performing less reliably for certain populations.
 
-AIFramework.site makes the case that transparency is a prerequisite for accountability. Without clear demographic and subgroup information, hospitals, researchers, and the public cannot easily determine whether fairness risks were adequately assessed.
+The project makes the case that transparency is a prerequisite for accountability. Without clear demographic and subgroup information, hospitals, researchers, and the public cannot easily determine whether fairness risks were adequately assessed.
 
 ## Project Positioning
 
