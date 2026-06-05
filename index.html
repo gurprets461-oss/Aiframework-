@@ -98,6 +98,13 @@
       background: none;
       font-family: var(--sans);
       letter-spacing: 0.01em;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    #limitations,
+    #glossary {
+      scroll-margin-top: 72px;
     }
 
     .nav-link:hover { color: var(--teal); background: var(--teal-light); }
@@ -1201,17 +1208,17 @@
 <!-- ═══ NAV ═══ -->
 <nav id="nav">
   <div class="nav-inner">
-    <span class="nav-brand" onclick="showPage('home')">Fairness in Medical AI</span>
+    <a class="nav-brand" href="#home">Fairness in Medical AI</a>
     <div class="nav-links">
-      <button class="nav-link active" onclick="showPage('home')">Home</button>
-      <button class="nav-link" onclick="showPage('start')">Start Here</button>
-      <button class="nav-link" onclick="showPage('problem')">Understanding the Problem</button>
-      <button class="nav-link" onclick="showPage('findings')">Key Findings</button>
-      <button class="nav-link" onclick="showPage('policy')">Policy Brief</button>
-      <button class="nav-link" onclick="showPage('framework')">Auditing Framework</button>
-      <button class="nav-link" onclick="showPage('cases')">Case Studies</button>
-      <button class="nav-link" onclick="showPage('guide')">Public Guide</button>
-      <button class="nav-link" onclick="showPage('about')">About &amp; Sources</button>
+      <a class="nav-link active" href="#home" data-page="home">Home</a>
+      <a class="nav-link" href="#start" data-page="start">Start Here</a>
+      <a class="nav-link" href="#problem" data-page="problem">Understanding the Problem</a>
+      <a class="nav-link" href="#findings" data-page="findings">Key Findings</a>
+      <a class="nav-link" href="#policy" data-page="policy">Policy Brief</a>
+      <a class="nav-link" href="#framework" data-page="framework">Auditing Framework</a>
+      <a class="nav-link" href="#cases" data-page="cases">Case Studies</a>
+      <a class="nav-link" href="#guide" data-page="guide">Public Guide</a>
+      <a class="nav-link" href="#about" data-page="about">About &amp; Sources</a>
     </div>
   </div>
 </nav>
@@ -1421,7 +1428,7 @@
       <li><strong>Policy Brief</strong> — recommendations for stronger public disclosure</li>
       <li><strong>Auditing Framework</strong> — a 12-point checklist for reviewing public records</li>
       <li><strong>Case Studies</strong> — how the framework applies to real FDA-authorized tools</li>
-      <li><strong>About &amp; Sources</strong> — <a href="#" style="color: var(--teal);" onclick="goToGlossary(); return false;">glossary</a> of terms and project limitations</li>
+      <li><strong>About &amp; Sources</strong> — <a href="#glossary" style="color: var(--teal);">glossary</a> of terms and project limitations</li>
     </ul>
 
     <div style="margin-top: 32px;">
@@ -1441,7 +1448,7 @@
   <div class="page-header">
     <div class="page-header-inner">
       <h1>Understanding the Problem</h1>
-      <p class="lead">To understand the issue this project addresses, it helps to begin with a basic question: what are medical AI tools, and why could fairness be a concern? This section explains the topic in plain language for readers who may have little or no prior background in artificial intelligence, medicine, or regulation. Unfamiliar terms are defined in the <a href="#" class="text-teal" style="color: var(--teal);" onclick="goToGlossary(); return false;">glossary</a> on About &amp; Sources.</p>
+      <p class="lead">To understand the issue this project addresses, it helps to begin with a basic question: what are medical AI tools, and why could fairness be a concern? This section explains the topic in plain language for readers who may have little or no prior background in artificial intelligence, medicine, or regulation. Unfamiliar terms are defined in the <a href="#glossary" class="text-teal" style="color: var(--teal);">glossary</a> on About &amp; Sources.</p>
     </div>
   </div>
 
@@ -1673,7 +1680,7 @@
   <div class="section">
     <div class="section-label">Methodology</div>
     <h2 class="section-title">How the analysis was done</h2>
-    <p class="body-text">The project used a mixed documentary and policy-analysis approach. Methods included literature review, claim verification through public and institutional sources, structured comparison across U.S. Food and Drug Administration (FDA) facing materials, document-by-document review of device records, and AI-assisted synthesis to identify recurring patterns in transparency gaps, subgroup visibility, validation practices, and monitoring expectations. See <a href="#" class="text-teal" style="color: var(--teal);" onclick="goToLimitations(); return false;">limitations and detailed methodology</a> on About &amp; Sources.</p>
+    <p class="body-text">The project used a mixed documentary and policy-analysis approach. Methods included literature review, claim verification through public and institutional sources, structured comparison across U.S. Food and Drug Administration (FDA) facing materials, document-by-document review of device records, and AI-assisted synthesis to identify recurring patterns in transparency gaps, subgroup visibility, validation practices, and monitoring expectations. See <a href="#limitations" class="text-teal" style="color: var(--teal);">limitations and detailed methodology</a> on About &amp; Sources.</p>
     <ul class="bullet-list">
       <li>Literature review of academic, institutional, and regulatory sources</li>
       <li>Verification of major statistics and claims through public sources</li>
@@ -2276,44 +2283,22 @@
 
 
 <script>
-  function showPage(id) {
-    // Hide all pages
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    // Show selected
-    const page = document.getElementById('page-' + id);
-    if (page) page.classList.add('active');
+  var PAGE_IDS = ['home', 'start', 'problem', 'findings', 'policy', 'framework', 'cases', 'guide', 'about'];
+  var SUPPLEMENT_SECTIONS = { glossary: 'about', limitations: 'about' };
 
-    // Update nav
-    const labels = {
-      home: 'Home',
-      start: 'Start Here',
-      problem: 'Understanding the Problem',
-      findings: 'Key Findings',
-      policy: 'Policy Brief',
-      framework: 'Auditing Framework',
-      cases: 'Case Studies',
-      guide: 'Public Guide',
-      about: 'About & Sources'
-    };
-
-    document.querySelectorAll('.nav-link').forEach(btn => {
-      btn.classList.toggle('active', btn.textContent.trim().replace('&', '&') === (labels[id] || ''));
-    });
-
-    // Scroll to top
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  function parseHash() {
+    var raw = (location.hash || '#home').slice(1) || 'home';
+    if (SUPPLEMENT_SECTIONS[raw]) {
+      return { page: SUPPLEMENT_SECTIONS[raw], section: raw };
+    }
+    if (PAGE_IDS.indexOf(raw) !== -1) {
+      return { page: raw, section: null };
+    }
+    return { page: 'home', section: null };
   }
 
-  // Set correct nav active state on load
-  document.querySelectorAll('.nav-link').forEach((btn, i) => {
-    btn.addEventListener('click', function() {
-      document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
-      this.classList.add('active');
-    });
-  });
-
   function scrollToSupplementSection(sectionId) {
-    const el = document.getElementById(sectionId);
+    var el = document.getElementById(sectionId);
     if (el) {
       setTimeout(function () {
         el.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -2321,15 +2306,50 @@
     }
   }
 
+  function showPage(id, opts) {
+    opts = opts || {};
+    var updateHash = opts.updateHash !== false;
+    var section = opts.section || null;
+    var scrollTop = opts.scrollTop !== false;
+    var hashTarget = section || id;
+
+    if (updateHash && location.hash.slice(1) !== hashTarget) {
+      location.hash = hashTarget;
+      return;
+    }
+
+    document.querySelectorAll('.page').forEach(function (p) {
+      p.classList.remove('active');
+    });
+    var page = document.getElementById('page-' + id);
+    if (page) page.classList.add('active');
+
+    document.querySelectorAll('.nav-link[data-page]').forEach(function (link) {
+      link.classList.toggle('active', link.dataset.page === id);
+    });
+
+    if (section) {
+      scrollToSupplementSection(section);
+    } else if (scrollTop) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  function navigateFromHash() {
+    var route = parseHash();
+    showPage(route.page, { updateHash: false, section: route.section, scrollTop: !route.section });
+  }
+
   function goToGlossary() {
-    showPage('about');
-    scrollToSupplementSection('glossary');
+    location.hash = 'glossary';
   }
 
   function goToLimitations() {
-    showPage('about');
-    scrollToSupplementSection('limitations');
+    location.hash = 'limitations';
   }
+
+  window.addEventListener('hashchange', navigateFromHash);
+  navigateFromHash();
 </script>
 
 <script src="supplement.js"></script>
