@@ -1178,6 +1178,284 @@
     .bg-teal-light { background: var(--teal-light); }
     .bg-amber-light { background: var(--amber-light); }
 
+    /* ─── RUBRIC SCORER ─── */
+    #rubric-scorer {
+      scroll-margin-top: 72px;
+    }
+
+    .rubric-scorer-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-top: 28px;
+    }
+
+    .rubric-toolbar {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    .rubric-toolbar-field label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      margin-bottom: 8px;
+    }
+
+    .rubric-input,
+    .rubric-select {
+      width: 100%;
+      font-family: var(--sans);
+      font-size: 14.5px;
+      color: var(--text);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      transition: border-color .2s;
+    }
+
+    .rubric-input:focus,
+    .rubric-select:focus {
+      outline: none;
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(8,145,178,.12);
+    }
+
+    .rubric-summary {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 24px;
+      align-items: center;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 20px;
+    }
+
+    .rubric-summary-score {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .rubric-summary-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(240,246,252,.55);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .rubric-summary-total {
+      font-family: var(--mono);
+      font-size: 42px;
+      font-weight: 500;
+      color: #f0f6fc;
+      line-height: 1;
+    }
+
+    .rubric-summary-max {
+      font-family: var(--mono);
+      font-size: 18px;
+      color: rgba(240,246,252,.45);
+    }
+
+    .rubric-band {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+    }
+
+    .rubric-band-pending { background: rgba(240,246,252,.12); color: rgba(240,246,252,.75); }
+    .rubric-band-strong { background: var(--teal-light); color: var(--teal); }
+    .rubric-band-moderate { background: var(--green-light); color: var(--green); }
+    .rubric-band-limited { background: var(--amber-light); color: var(--amber); }
+    .rubric-band-poor { background: var(--red-light); color: var(--red); }
+
+    .rubric-band-note,
+    .rubric-progress {
+      font-size: 13.5px;
+      color: rgba(240,246,252,.7);
+      line-height: 1.5;
+    }
+
+    .rubric-progress {
+      margin-top: 6px;
+      font-size: 12.5px;
+      color: rgba(240,246,252,.45);
+    }
+
+    .rubric-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 24px;
+      font-size: 13px;
+      color: var(--text-mid);
+      margin-bottom: 16px;
+      padding: 12px 16px;
+      background: var(--bg);
+      border-radius: 8px;
+    }
+
+    .rubric-legend strong {
+      font-family: var(--mono);
+      color: var(--navy);
+    }
+
+    .rubric-criteria {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .rubric-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: center;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .rubric-row:last-child { border-bottom: none; }
+    .rubric-row:hover { background: var(--bg); }
+
+    .rubric-row-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .rubric-row-num {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--teal);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .rubric-row-title {
+      font-size: 14.5px;
+      font-weight: 500;
+      color: var(--navy);
+      line-height: 1.45;
+    }
+
+    .rubric-row-scores {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .rubric-score-option {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .rubric-score-option input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .rubric-score-option span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 36px;
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-mid);
+      background: var(--bg);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      transition: all .15s;
+    }
+
+    .rubric-score-option:hover span {
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+
+    .rubric-score-option input:checked + span {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: white;
+    }
+
+    .rubric-score-option input:focus-visible + span {
+      box-shadow: 0 0 0 3px rgba(8,145,178,.25);
+    }
+
+    .rubric-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .rubric-disclaimer {
+      font-size: 13px;
+      color: var(--text-light);
+      line-height: 1.6;
+      margin-top: 20px;
+      font-style: italic;
+    }
+
+    @media (max-width: 800px) {
+      .rubric-toolbar { grid-template-columns: 1fr; }
+      .rubric-summary { grid-template-columns: 1fr; }
+      .rubric-row { grid-template-columns: 1fr; gap: 12px; }
+      .rubric-row-scores { justify-content: flex-start; }
+    }
+
+    @media print {
+      body.rubric-printing #nav,
+      body.rubric-printing #footer,
+      body.rubric-printing .page:not(.active),
+      body.rubric-printing .rubric-actions,
+      body.rubric-printing .rubric-toolbar {
+        display: none !important;
+      }
+
+      body.rubric-printing .page.active {
+        display: block !important;
+      }
+
+      body.rubric-printing .rubric-scorer-wrap {
+        border: none;
+        padding: 0;
+      }
+
+      body.rubric-printing .rubric-score-option span {
+        border: 1px solid #999;
+      }
+
+      body.rubric-printing .rubric-score-option input:not(:checked) + span {
+        color: #ccc;
+      }
+    }
+
     /* ─── ANIMATIONS ─── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
@@ -1353,7 +1631,8 @@
       <div class="checklist-item"><div class="check-box"></div>Post-market monitoring described</div>
     </div>
     <div style="margin-top: 24px;">
-      <button class="btn btn-secondary" onclick="showPage('framework')">See Full Framework</button>
+      <button class="btn btn-secondary" onclick="showPage('framework', { section: 'rubric-scorer' })">Try the Rubric Scorer</button>
+      <button class="btn btn-secondary" onclick="showPage('framework')" style="margin-left: 8px;">See Full Framework</button>
     </div>
   </div>
 
@@ -1965,6 +2244,19 @@
       <li class="how-step">If transparency is weak, do not assume that fairness has already been adequately assessed.</li>
     </ol>
 
+    <hr class="section-divider" style="margin: 56px 0;">
+
+    <!-- Interactive rubric scorer -->
+    <div class="section-label" id="rubric-scorer">Interactive Tool</div>
+    <h2 class="section-title">Score a device with the rubric</h2>
+    <p class="body-text">Use this scorer while reviewing public FDA-facing materials. Select 0, 0.5, or 1 for each criterion; your total and interpretation update automatically. Load a pilot case-study example to see how the framework was applied in this project.</p>
+
+    <div class="rubric-scorer-wrap">
+      <div id="rubric-scorer-mount" aria-live="polite">
+        <p class="body-text">Loading rubric scorer…</p>
+      </div>
+    </div>
+
     <div style="margin-top: 36px;">
       <button class="btn btn-primary" onclick="showPage('cases')">See Case Studies →</button>
     </div>
@@ -2291,6 +2583,14 @@
     if (SUPPLEMENT_SECTIONS[raw]) {
       return { page: SUPPLEMENT_SECTIONS[raw], section: raw };
     }
+    var pageSection = raw.indexOf('/');
+    if (pageSection !== -1) {
+      var pageId = raw.slice(0, pageSection);
+      var sectionId = raw.slice(pageSection + 1);
+      if (PAGE_IDS.indexOf(pageId) !== -1) {
+        return { page: pageId, section: sectionId };
+      }
+    }
     if (PAGE_IDS.indexOf(raw) !== -1) {
       return { page: raw, section: null };
     }
@@ -2311,7 +2611,7 @@
     var updateHash = opts.updateHash !== false;
     var section = opts.section || null;
     var scrollTop = opts.scrollTop !== false;
-    var hashTarget = section || id;
+    var hashTarget = section ? id + '/' + section : id;
 
     if (updateHash && location.hash.slice(1) !== hashTarget) {
       location.hash = hashTarget;
@@ -2352,6 +2652,7 @@
   navigateFromHash();
 </script>
 
+<script src="rubric.js"></script>
 <script src="supplement.js"></script>
 
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"f39fb7b1faca4250aadb8bd708f6c408","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
