@@ -3,6 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A public research resource on demographic transparency, algorithmic bias, and accountability in FDA-approved AI diagnostic tools. Includes policy recommendations, an auditing rubric, and case studies.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Evaluating Fairness in FDA-Approved AI Diagnostic Tools">
+  <meta property="og:description" content="A public research resource on demographic transparency, algorithmic bias, and accountability in FDA-approved AI diagnostic tools.">
+  <meta property="og:url" content="https://gurprets461-oss.github.io/Aiframework-/">
   <title>Evaluating Fairness in FDA-Approved AI Diagnostic Tools</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -103,7 +108,8 @@
     }
 
     #limitations,
-    #glossary {
+    #glossary,
+    #rubric-scorer {
       scroll-margin-top: 72px;
     }
 
@@ -2577,6 +2583,74 @@
 <script>
   var PAGE_IDS = ['home', 'start', 'problem', 'findings', 'policy', 'framework', 'cases', 'guide', 'about'];
   var SUPPLEMENT_SECTIONS = { glossary: 'about', limitations: 'about' };
+  var SITE_NAME = 'Fairness in Medical AI';
+  var PAGE_META = {
+    home: {
+      title: 'Evaluating Fairness in FDA-Approved AI Diagnostic Tools',
+      description: 'A public research resource on demographic transparency, algorithmic bias, and accountability in FDA-approved AI diagnostic tools. Includes policy recommendations, an auditing rubric, and case studies.',
+    },
+    start: {
+      title: 'Start Here',
+      description: 'A two-minute plain-language introduction to fairness and transparency in FDA-approved medical AI, before diving into the full research sections.',
+    },
+    problem: {
+      title: 'Understanding the Problem',
+      description: 'Why demographic representation and subgroup performance matter in medical AI, and why public regulatory records often leave fairness risk hard to assess.',
+    },
+    findings: {
+      title: 'Key Findings',
+      description: 'Evidence summaries on transparency gaps in FDA-facing documentation for AI-enabled medical devices, including demographic reporting and post-market monitoring.',
+    },
+    policy: {
+      title: 'Policy Brief',
+      description: 'Practical recommendations for stronger minimum disclosure standards in FDA-facing documentation for AI diagnostic and triage tools.',
+    },
+    framework: {
+      title: 'Auditing Framework',
+      description: 'The Demographic Transparency and Deployment Readiness Rubric — a 12-criterion framework for evaluating fairness-relevant information in public device records.',
+    },
+    cases: {
+      title: 'Case Studies',
+      description: 'Pilot applications of the transparency rubric to FDA-authorized devices including IDx-DR, ContaCT / Viz.ai, GI Genius, Rapid ICH, and AEYE-DS.',
+    },
+    guide: {
+      title: 'Public Guide',
+      description: 'Plain-language questions patients, students, and nontechnical readers can use to think critically about medical AI transparency and deployment.',
+    },
+    about: {
+      title: 'About & Sources',
+      description: 'Project background, cited sources, glossary, limitations, and methodology for this honors research resource on medical AI fairness.',
+    },
+  };
+  var SECTION_META = {
+    glossary: {
+      title: 'Glossary',
+      description: 'Definitions of key terms in medical AI, FDA regulation, and demographic transparency — written for readers without a technical background.',
+    },
+    limitations: {
+      title: 'Limitations & Methodology',
+      description: 'Explicit boundaries on what this project can conclude from public materials, plus the research methodology used in the honors project.',
+    },
+    'rubric-scorer': {
+      title: 'Rubric Scorer',
+      description: 'Interactive tool to score an AI diagnostic or triage tool against the 12-item Demographic Transparency and Deployment Readiness Rubric.',
+    },
+  };
+
+  function updatePageMeta(pageId, sectionId) {
+    var meta = (sectionId && SECTION_META[sectionId]) || PAGE_META[pageId] || PAGE_META.home;
+    var title = meta.title + ' · ' + SITE_NAME;
+    document.title = title;
+
+    var descEl = document.querySelector('meta[name="description"]');
+    if (descEl) descEl.setAttribute('content', meta.description);
+
+    var ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', title);
+
+    var ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute('content', meta.description);
+  }
 
   function parseHash() {
     var raw = (location.hash || '#home').slice(1) || 'home';
@@ -2627,6 +2701,8 @@
     document.querySelectorAll('.nav-link[data-page]').forEach(function (link) {
       link.classList.toggle('active', link.dataset.page === id);
     });
+
+    updatePageMeta(id, section);
 
     if (section) {
       scrollToSupplementSection(section);
