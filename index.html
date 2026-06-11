@@ -1103,6 +1103,25 @@
       line-height: 1.75;
     }
 
+    .case-study-actions {
+      margin-top: 20px;
+    }
+
+    .case-study-rubric-link {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--teal);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      font-family: var(--sans);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .case-study-rubric-link:hover { color: var(--navy); }
+
     /* ─── VARIABLE TABLE ─── */
     .var-table {
       width: 100%;
@@ -2298,6 +2317,7 @@
             <th>Type / Purpose</th>
             <th>Rating</th>
             <th>Short Comment</th>
+            <th>Rubric</th>
           </tr>
         </thead>
         <tbody>
@@ -2306,30 +2326,35 @@
             <td>Diabetic retinopathy detection device</td>
             <td><span class="badge badge-moderate">Moderate</span></td>
             <td>Public-facing materials provided stronger demographic and validation visibility than many of the other devices reviewed.</td>
+            <td><button type="button" class="case-study-rubric-link" onclick="goToRubricExample('idx-dr')">View breakdown</button></td>
           </tr>
           <tr>
             <td style="font-weight: 600; color: var(--navy);">ContaCT / Viz.ai</td>
             <td>Stroke triage notification tool</td>
             <td><span class="badge badge-poor">Poor</span></td>
             <td>Intended use was clear, but demographic and subgroup detail were limited in the public-facing materials reviewed.</td>
+            <td><button type="button" class="case-study-rubric-link" onclick="goToRubricExample('contact')">View breakdown</button></td>
           </tr>
           <tr>
             <td style="font-weight: 600; color: var(--navy);">GI Genius</td>
             <td>Colonoscopy lesion detection system</td>
             <td><span class="badge badge-limited">Limited</span></td>
             <td>Validation visibility was stronger than subgroup transparency, leaving important equity-related questions open.</td>
+            <td><button type="button" class="case-study-rubric-link" onclick="goToRubricExample('gi-genius')">View breakdown</button></td>
           </tr>
           <tr>
             <td style="font-weight: 600; color: var(--navy);">Rapid ICH</td>
             <td>Intracranial hemorrhage triage notification tool</td>
             <td><span class="badge badge-limited">Limited</span></td>
             <td>Some validation information was visible, but demographic reporting and subgroup visibility remained weak.</td>
+            <td><button type="button" class="case-study-rubric-link" onclick="goToRubricExample('rapid-ich')">View breakdown</button></td>
           </tr>
           <tr>
             <td style="font-weight: 600; color: var(--navy);">AEYE-DS</td>
             <td>Diabetic retinopathy detection device</td>
             <td><span class="badge badge-moderate">Moderate</span></td>
             <td>Relative to several other tools in the sample, this device showed stronger demographic and subgroup visibility in the public-facing record.</td>
+            <td><button type="button" class="case-study-rubric-link" onclick="goToRubricExample('aeye-ds')">View breakdown</button></td>
           </tr>
         </tbody>
       </table>
@@ -2348,6 +2373,9 @@
       </div>
       <div class="type-tag">Diabetic retinopathy detection system</div>
       <p>IDx-DR is an autonomous diabetic retinopathy detection system. In plain language, it analyzes retinal images from patients with diabetes and helps identify whether signs of diabetic retinopathy are present. In the public-facing materials reviewed for this project, IDx-DR showed stronger transparency than many of the other devices examined. The record included meaningful information about the pivotal study population and provided demographic detail that made representation easier to assess. Even so, subgroup performance reporting and post-market monitoring visibility remained incomplete.</p>
+      <div class="case-study-actions">
+        <button type="button" class="btn btn-secondary" onclick="goToRubricExample('idx-dr')">View rubric breakdown →</button>
+      </div>
     </div>
 
     <div class="case-study-block">
@@ -2357,6 +2385,9 @@
       </div>
       <div class="type-tag">Stroke triage and notification tool</div>
       <p>ContaCT, developed by Viz.ai, is a stroke triage and notification tool designed to help identify possible large vessel occlusion in imaging data and alert specialists more quickly. The public-facing materials reviewed for this project made the intended use of the tool clear, but provided limited demographic and subgroup information. This made it difficult to judge fairness risk from the available record.</p>
+      <div class="case-study-actions">
+        <button type="button" class="btn btn-secondary" onclick="goToRubricExample('contact')">View rubric breakdown →</button>
+      </div>
     </div>
 
     <div class="case-study-block">
@@ -2366,6 +2397,9 @@
       </div>
       <div class="type-tag">Gastrointestinal lesion detection system</div>
       <p>GI Genius is a gastrointestinal lesion detection system used during colonoscopy to help clinicians identify possible lesions or polyps in real time. The public-facing materials reviewed for this project provided meaningful information about validation design and clinical purpose, but race or ethnicity reporting and subgroup performance remained unclear. This made the tool easier to understand clinically than to assess from a fairness perspective.</p>
+      <div class="case-study-actions">
+        <button type="button" class="btn btn-secondary" onclick="goToRubricExample('gi-genius')">View rubric breakdown →</button>
+      </div>
     </div>
 
     <div class="case-study-block">
@@ -2375,6 +2409,9 @@
       </div>
       <div class="type-tag">Radiological triage and notification tool</div>
       <p>Rapid ICH is a radiological triage and notification tool for possible intracranial hemorrhage on head CT scans. It is intended to help prioritize urgent review rather than replace clinician judgment. In the public-facing materials reviewed for this project, some validation and intended-use information was visible, but demographic transparency and subgroup reporting were limited.</p>
+      <div class="case-study-actions">
+        <button type="button" class="btn btn-secondary" onclick="goToRubricExample('rapid-ich')">View rubric breakdown →</button>
+      </div>
     </div>
 
     <div class="case-study-block">
@@ -2384,6 +2421,9 @@
       </div>
       <div class="type-tag">Diabetic retinopathy detection device</div>
       <p>AEYE-DS is a diabetic retinopathy detection device similar in broad purpose to IDx-DR. In the public-facing materials reviewed for this project, it showed relatively stronger transparency than several of the other devices examined, especially in relation to validation and demographic visibility. However, like the others, it still left important questions about post-market monitoring and local deployment fit unanswered.</p>
+      <div class="case-study-actions">
+        <button type="button" class="btn btn-secondary" onclick="goToRubricExample('aeye-ds')">View rubric breakdown →</button>
+      </div>
     </div>
 
     <div class="callout-amber">
@@ -2583,6 +2623,8 @@
 <script>
   var PAGE_IDS = ['home', 'start', 'problem', 'findings', 'policy', 'framework', 'cases', 'guide', 'about'];
   var SUPPLEMENT_SECTIONS = { glossary: 'about', limitations: 'about' };
+  var pendingRubricExample = null;
+  var rubricExampleRetryCount = 0;
   var SITE_NAME = 'Fairness in Medical AI';
   var PAGE_META = {
     home: {
@@ -2652,23 +2694,78 @@
     if (ogDesc) ogDesc.setAttribute('content', meta.description);
   }
 
+  function parseHashQuery(raw) {
+    var rubricExample = null;
+    var queryIndex = raw.indexOf('?');
+    if (queryIndex === -1) {
+      return { path: raw, rubricExample: rubricExample };
+    }
+
+    var path = raw.slice(0, queryIndex);
+    raw.slice(queryIndex + 1).split('&').forEach(function (pair) {
+      var eq = pair.indexOf('=');
+      if (eq === -1) return;
+      var key = decodeURIComponent(pair.slice(0, eq));
+      var value = decodeURIComponent(pair.slice(eq + 1));
+      if (key === 'example') rubricExample = value;
+    });
+
+    return { path: path, rubricExample: rubricExample };
+  }
+
   function parseHash() {
     var raw = (location.hash || '#home').slice(1) || 'home';
+    var parsed = parseHashQuery(raw);
+    raw = parsed.path;
+
     if (SUPPLEMENT_SECTIONS[raw]) {
-      return { page: SUPPLEMENT_SECTIONS[raw], section: raw };
+      return { page: SUPPLEMENT_SECTIONS[raw], section: raw, rubricExample: parsed.rubricExample };
     }
     var pageSection = raw.indexOf('/');
     if (pageSection !== -1) {
       var pageId = raw.slice(0, pageSection);
       var sectionId = raw.slice(pageSection + 1);
       if (PAGE_IDS.indexOf(pageId) !== -1) {
-        return { page: pageId, section: sectionId };
+        return { page: pageId, section: sectionId, rubricExample: parsed.rubricExample };
       }
     }
     if (PAGE_IDS.indexOf(raw) !== -1) {
-      return { page: raw, section: null };
+      return { page: raw, section: null, rubricExample: parsed.rubricExample };
     }
-    return { page: 'home', section: null };
+    return { page: 'home', section: null, rubricExample: parsed.rubricExample };
+  }
+
+  function applyPendingRubricExample() {
+    if (!pendingRubricExample) return;
+
+    if (!window.RubricScorer || !window.RubricScorer.EXAMPLES[pendingRubricExample]) {
+      if (rubricExampleRetryCount < 40) {
+        rubricExampleRetryCount += 1;
+        setTimeout(applyPendingRubricExample, 50);
+      }
+      return;
+    }
+
+    var exampleId = pendingRubricExample;
+    pendingRubricExample = null;
+    rubricExampleRetryCount = 0;
+    window.RubricScorer.loadExample(exampleId);
+  }
+
+  function goToRubricExample(exampleId) {
+    if (!exampleId) return;
+
+    pendingRubricExample = exampleId;
+    rubricExampleRetryCount = 0;
+    var target = 'framework/rubric-scorer?example=' + encodeURIComponent(exampleId);
+
+    if (location.hash.slice(1) === target) {
+      showPage('framework', { updateHash: false, section: 'rubric-scorer', scrollTop: false });
+      applyPendingRubricExample();
+      return;
+    }
+
+    location.hash = target;
   }
 
   function scrollToSupplementSection(sectionId) {
@@ -2713,7 +2810,14 @@
 
   function navigateFromHash() {
     var route = parseHash();
+    if (route.rubricExample) {
+      pendingRubricExample = route.rubricExample;
+      rubricExampleRetryCount = 0;
+    }
     showPage(route.page, { updateHash: false, section: route.section, scrollTop: !route.section });
+    if (route.section === 'rubric-scorer' && route.rubricExample) {
+      applyPendingRubricExample();
+    }
   }
 
   function goToGlossary() {
